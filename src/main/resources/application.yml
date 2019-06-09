@@ -1,0 +1,25 @@
+server:
+  port: 8181
+spring:
+  thymeleaf:
+    mode: HTML5
+    cache: false
+  datasource:
+    driver-class-name: org.h2.Driver
+    # 配置内存状态的 h2数据库
+    url: jdbc:h2:mem:~/test
+    username: sa
+    password: 123456
+    # 此处可以配置想要初始化的表和数据
+#    schema: classpath:sql/schema.sql
+#    data: classpath:sql/data.sql
+  jpa:
+    database: H2
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+      console:
+        path: /h2-console
+        enabled: true
+

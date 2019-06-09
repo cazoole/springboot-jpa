@@ -1,0 +1,71 @@
+2019-06-09 18:05:45.817  INFO 18420 --- [restartedMain] com.lw.jpa.demo.DemoApplication          : Starting DemoApplication on SJ-JQ2184 with PID 18420 (D:\idea_program\springboot-jpa\target\classes started by wei.liuw in D:\idea_program\springboot-jpa)
+2019-06-09 18:05:45.825  INFO 18420 --- [restartedMain] com.lw.jpa.demo.DemoApplication          : No active profile set, falling back to default profiles: default
+2019-06-09 18:05:45.912  INFO 18420 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-06-09 18:05:45.913  INFO 18420 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-06-09 18:05:48.150  INFO 18420 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-06-09 18:05:48.307  INFO 18420 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 148ms. Found 2 repository interfaces.
+2019-06-09 18:05:49.207  INFO 18420 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d67666db] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-09 18:05:50.577  INFO 18420 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8181 (http)
+2019-06-09 18:05:50.606  INFO 18420 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-06-09 18:05:50.621  INFO 18420 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-06-09 18:05:50.859  INFO 18420 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-06-09 18:05:50.859  INFO 18420 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4946 ms
+2019-06-09 18:05:51.338  INFO 18420 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-06-09 18:05:51.475  INFO 18420 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.9.Final}
+2019-06-09 18:05:51.475  INFO 18420 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-06-09 18:05:51.806  INFO 18420 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-06-09 18:05:52.140  INFO 18420 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-06-09 18:05:52.418  INFO 18420 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-06-09 18:05:52.443  INFO 18420 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-06-09 18:05:53.944  INFO 18420 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-06-09 18:05:54.066  INFO 18420 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-06-09 18:05:54.838  INFO 18420 --- [restartedMain] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-06-09 18:05:56.183  WARN 18420 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-06-09 18:05:56.554  INFO 18420 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-06-09 18:05:56.943  INFO 18420 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-09 18:05:57.165  WARN 18420 --- [restartedMain] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2019-06-09 18:05:57.223  INFO 18420 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-06-09 18:05:57.639  INFO 18420 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2019-06-09 18:05:57.657  INFO 18420 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-06-09 18:05:57.657  INFO 18420 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.1 created.
+2019-06-09 18:05:57.657  INFO 18420 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2019-06-09 18:05:57.657  INFO 18420 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.1) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-06-09 18:05:57.657  INFO 18420 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-06-09 18:05:57.657  INFO 18420 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.1
+2019-06-09 18:05:57.657  INFO 18420 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2a9c00ff
+2019-06-09 18:05:57.853  INFO 18420 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-06-09 18:05:57.905  INFO 18420 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-06-09 18:05:57.984  INFO 18420 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-06-09 18:05:58.174  INFO 18420 --- [restartedMain] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addCustomUsingPOST_1
+2019-06-09 18:05:58.243  INFO 18420 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2019-06-09 18:05:58.243  INFO 18420 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-06-09 18:05:58.315  INFO 18420 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8181 (http) with context path ''
+2019-06-09 18:05:58.315  INFO 18420 --- [restartedMain] com.lw.jpa.demo.DemoApplication          : Started DemoApplication in 14.007 seconds (JVM running for 16.647)
+2019-06-09 18:06:26.543  INFO 18420 --- [http-nio-8181-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-06-09 18:06:26.543  INFO 18420 --- [http-nio-8181-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-06-09 18:06:26.565  INFO 18420 --- [http-nio-8181-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 22 ms
+2019-06-09 18:06:26.624  INFO 18420 --- [http-nio-8181-exec-1] c.l.j.d.c.WebSocketChartController       : sId:1113
+2019-06-09 18:06:36.001  INFO 18420 --- [http-nio-8181-exec-2] c.l.j.d.c.WebSocketChartController       : sId:1112
+2019-06-09 18:06:41.527  INFO 18420 --- [http-nio-8181-exec-4] c.l.j.d.c.WebSocketChartController       : sId:1111
+2019-06-09 18:07:05.416  INFO 18420 --- [http-nio-8181-exec-6] c.l.j.d.c.WebSocketChartController       : sId = 1111, message="你好"
+2019-06-09 18:08:15.102  INFO 18420 --- [Thread-37] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2019-06-09 18:08:15.127  INFO 18420 --- [Thread-37] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2019-06-09 18:08:15.133  INFO 18420 --- [Thread-37] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2019-06-09 18:08:15.133  INFO 18420 --- [Thread-37] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2019-06-09 18:08:15.135  INFO 18420 --- [Thread-37] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2019-06-09 18:08:15.135  INFO 18420 --- [Thread-37] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-09 18:08:15.149  INFO 18420 --- [Thread-37] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-06-09 18:08:15.182  INFO 18420 --- [Thread-37] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-199]
+2019-06-09 18:08:15.182  INFO 18420 --- [Thread-37] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-06-09 18:08:15.182  INFO 18420 --- [Thread-37] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Close initiated...
+2019-06-09 18:08:15.210  INFO 18420 --- [Thread-37] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Closed.
+2019-06-09 18:08:15.210  INFO 18420 --- [Thread-37] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -112,7 +112,7 @@ public class MyChartWebSocketDemo {
         if(this.sId.equals(userId)) {
             return message;
         } else {
-            return this.sId.concat(":").concat(message);
+            return this.sId.concat(" : ").concat(message);
         }
     }
 

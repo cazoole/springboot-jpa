@@ -26,7 +26,7 @@ public class ResponseUtil {
     public static ResultResponse buildResponse(ResponseCodeEnum responseCodeEnum, String message, Object data) {
         return new ResultResponse()
                 .setRespCode(responseCodeEnum.getCode())
-                .setRespMsg(responseCodeEnum.getDesc().concat(null == message ? "":"，异常原因：".concat(message)))
+                .setRespMsg(responseCodeEnum.getDesc().concat(null == message ? "":":".concat(message)))
                 .setSuccess(ResponseCodeEnum.isSuccess(responseCodeEnum.getCode()))
                 .setRespData(data);
     }

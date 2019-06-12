@@ -1,7 +1,6 @@
 package com.lw.jpa.demo.websocket;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.lw.jpa.demo.global.ResponseCodeEnum;
 import com.lw.jpa.demo.global.ResponseUtil;
@@ -13,6 +12,7 @@ import javax.websocket.*;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -54,7 +54,7 @@ public class MyChartWebSocketDemo {
     /**
      * 要发送i洗脑洗的别名
      */
-    private static final String CONTENT_TEXT = "contentText";
+    private static final String CONTENT_TEXT = "message";
 
     @OnOpen
     public void onOpen(Session session, @PathParam("sId") String sId) {
@@ -75,7 +75,7 @@ public class MyChartWebSocketDemo {
 
     @OnClose
     public void onClose() {
-        if(null == currentUserMap.remove(this.sId)) {
+        if(null != currentUserMap.remove(this.sId)) {
             log.info("用户：" + this.sId + "，已经登出，当前用户人数：" + atomicOnlineCount.decrementAndGet());
         }
     }
@@ -85,32 +85,34 @@ public class MyChartWebSocketDemo {
         log.info("收到用户：" + this.sId + "发来的一条消息，消息内容：" + message);
         if(StringUtils.isNoneBlank(message)) {
             // 消息不为空，发送消息
-            JSONArray jsonArray = JSONArray.parseArray(message);
-            for (int i = 0, total = jsonArray.size(); i < total; i++) {
-                JSONObject object = jsonArray.getJSONObject(i);
-                String toUserId = object.getString(TO_USER_SID);
-
-                // 如果目标用户不在线，则发送终止
-                MyChartWebSocketDemo socketDemo = currentUserMap.get(toUserId);
-                if(null == socketDemo) {
-                    log.warn("目标用户：" + toUserId + "，当前未上线！发送取消！");
-                    continue;
+            JSONObject jsonObject = JSON.parseObject(message);
+            String users = jsonObject.getString(TO_USER_SID);
+            String msgText = jsonObject.getString(CONTENT_TEXT);
+            Arrays.stream(users.split(",")).forEach(userId -> {
+                MyChartWebSocketDemo socketDemo = currentUserMap.get(userId);
+                if(null != socketDemo) {
+                    try {
+                        socketDemo.sendMessage(buildMessage(userId, msgText));
+                    } catch (IOException e) {
+                        log.error("发送通知消息异常，异常对象：", e);
+                    }
                 }
-
-                // 如果发送消息体为空，则发送终止
-                String contentText = object.getString(CONTENT_TEXT);
-                if(StringUtils.isBlank(contentText)) {
-                    log.warn("发送给用户：" + toUserId + "，消息体为空，发送取消！");
-                    continue;
-                }
-
-                // 校验通过，则发送消息
+            });
+            if(!users.contains(sId)) {
                 try {
-                    socketDemo.sendMessage(JSON.toJSONString(object));
+                    this.sendMessage(buildMessage(sId, msgText));
                 } catch (IOException e) {
-                    log.error("发送通知消息异常，异常对象：", e);
+                    log.error("发送消息时异常：", e);
                 }
             }
+        }
+    }
+
+    private String buildMessage(String userId, String message) {
+        if(this.sId.equals(userId)) {
+            return message;
+        } else {
+            return this.sId.concat(":").concat(message);
         }
     }
 

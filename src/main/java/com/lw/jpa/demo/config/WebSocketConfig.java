@@ -6,7 +6,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
  * 配置 websocket 的config。
- * @author wei.liuw
+ * @author wei.liuwp
  * @date 2019/6/9
  */
 @Configuration

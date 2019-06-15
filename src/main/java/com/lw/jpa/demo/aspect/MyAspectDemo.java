@@ -19,18 +19,12 @@ public class MyAspectDemo {
 
     @Around("@annotation(logIntercept)")
     public Object methodAspect(ProceedingJoinPoint joinPoint, LogIntercept logIntercept) throws Throwable {
-        System.out.println("进入aspect 切面：");
-        System.out.println(Arrays.asList(joinPoint.getArgs()));
-        System.out.println(joinPoint.getKind());
-        System.out.println(joinPoint.getSourceLocation());
-        System.out.println(joinPoint.getSignature().getDeclaringType());
-        System.out.println(joinPoint.getSignature().getDeclaringTypeName());
-        System.out.println(joinPoint.getSignature().getModifiers());
-        System.out.println(joinPoint.getSignature().getName());
+        log.info("进入aspect 切面：");
+        log.info("参数列表：" + Arrays.asList(joinPoint.getArgs()));
 
         Object obj = joinPoint.proceed();
 
-        System.out.println("切面处理结束！");
+        log.info("切面处理结束！");
         return obj;
     }
 

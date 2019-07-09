@@ -120,7 +120,7 @@ public class MyLogAspect {
      */
     @After(value = POINT_CUT)
     public void doAfter(JoinPoint joinPoint) {
-        log.info("@After notice = {}", joinPoint.toLongString());
+        log.info("@After notice  = {}", joinPoint.toLongString());
     }
 
     /**

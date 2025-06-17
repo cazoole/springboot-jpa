@@ -18,21 +18,21 @@ public class ControllerAdviceHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResultResponse unCatchExceptionResponse(Exception e){
-        log.error("处理时出现未捕获异常：", e);
-        return ResponseUtil.buildResponse(ResponseCodeEnum.FAIL, "处理时出现未知异常！");
+        log.error("Unresolved exception：", e);
+        return ResponseUtil.buildResponse(ResponseCodeEnum.FAIL, "Unresolved exception while processing record!");
     }
 
     @ExceptionHandler(EmptyResultDataAccessException.class)
     @ResponseBody
     public ResultResponse dataNoExistsResponse(EmptyResultDataAccessException e) {
-        log.error("处理时出现操作数据不存在的异常：", e);
-        return ResponseUtil.buildResponse(ResponseCodeEnum.FAIL, "操作数据不存在！");
+        log.error("Data not exists exception：", e);
+        return ResponseUtil.buildResponse(ResponseCodeEnum.FAIL, "Data not exists while try to operate.");
     }
 
     @ExceptionHandler(MyException.class)
     @ResponseBody
     public Object exceptionHandler(MyException e) {
-        log.error("出现通用型业务调用异常：", e);
+        log.error("Common exception：", e);
         return ResponseUtil.buildResponse(ResponseCodeEnum.FAIL, e.getMessage());
     }
 

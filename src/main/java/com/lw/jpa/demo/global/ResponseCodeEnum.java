@@ -5,14 +5,14 @@ package com.lw.jpa.demo.global;
  * @date 2019/5/7
  */
 public enum ResponseCodeEnum {
-    /** 成功响应*/
-    SUCCESS("0000", "处理完成"),
-    /** 失败的响应*/
-    FAIL("1111", "处理异常");
+    /** success*/
+    SUCCESS("0000", "PROCEED"),
+    /** failed*/
+    FAIL("1111", "EXCEPTION");
 
-    /** 响应码  */
+    /** code  */
     private String code;
-    /** 响应描述 */
+    /** code desc */
     private String desc;
 
     ResponseCodeEnum(String code, String desc){

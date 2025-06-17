@@ -19,12 +19,12 @@ public class MyAspectDemo {
 
     @Around("@annotation(logIntercept)")
     public Object methodAspect(ProceedingJoinPoint joinPoint, LogIntercept logIntercept) throws Throwable {
-        log.info("进入aspect 切面：");
-        log.info("参数列表：" + Arrays.asList(joinPoint.getArgs()));
+        log.info("Step into aspect : ");
+        log.info("Args: " + Arrays.asList(joinPoint.getArgs()));
 
         Object obj = joinPoint.proceed();
 
-        log.info("切面处理结束！");
+        log.info("Step out aspect.");
         return obj;
     }
 
@@ -32,7 +32,7 @@ public class MyAspectDemo {
     public Object typeAspect(ProceedingJoinPoint joinPoint) throws Throwable {
 
         Object obj = joinPoint.proceed();
-        log.info("切面执行结束，执行结果：" + obj);
+        log.info("Done the aspect, the result is: " + obj);
         return obj;
     }
 }

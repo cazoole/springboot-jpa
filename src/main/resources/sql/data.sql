@@ -1,3 +1,3 @@
-insert into User values ( '1', '张三', 29, 'F' );
-insert into User values ( '2', '李四', 20, 'F' );
-insert into User values ( '3', '如花', 18, 'M' );
+insert into User values ( '1', 'Tom', 29, 'F' );
+insert into User values ( '2', 'Colin', 20, 'F' );
+insert into User values ( '3', 'Kevin', 18, 'M' );

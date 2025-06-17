@@ -1,7 +1,5 @@
 package com.lw.jpa.demo.exception;
 
-import org.springframework.util.Assert;
-
 /**
  * @author wei.liuw
  * @date 2019/5/7

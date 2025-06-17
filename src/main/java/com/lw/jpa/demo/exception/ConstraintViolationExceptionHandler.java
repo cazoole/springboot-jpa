@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class ConstraintViolationExceptionHandler {
 
     public static String getCauseMessage(ConstraintViolationException exception) {
-        Assert.notNull(exception, "验证异常不能为空！");
+        Assert.notNull(exception, "Exception should not be null!");
         return exception.getConstraintViolations()
                 .stream()
                 .map(cv -> null == cv ? "null" : cv.getPropertyPath() + ":" + cv.getMessage())

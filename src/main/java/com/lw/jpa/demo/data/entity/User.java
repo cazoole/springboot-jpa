@@ -2,7 +2,7 @@ package com.lw.jpa.demo.data.entity;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * @author wei.liuw

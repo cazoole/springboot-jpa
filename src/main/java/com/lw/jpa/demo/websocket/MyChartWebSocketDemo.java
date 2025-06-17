@@ -18,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 实现一个简单的webSocket 的网页聊天室(使用原型模式)
+ * simple web chart room by websocket
  * @author wei.liuw
  * @date 2019/6/9
  */
@@ -28,63 +28,63 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class MyChartWebSocketDemo {
 
     /**
-     *  用于计数当前的聊天室登陆人数
+     *  count the current person in this chart room
       */
     private static AtomicInteger atomicOnlineCount = new AtomicInteger(0);
 
     /**
-     * 存放当前用户的信息等
+     * store current online users
      */
     private static ConcurrentHashMap<String, MyChartWebSocketDemo> currentUserMap = new ConcurrentHashMap<>();
 
     /**
-     * 用来存储登陆信息
+     * user's session info
      */
     private Session session;
 
     /**
-     * 用户唯一标识
+     * user unique id
      */
     private String sId = null;
 
     /**
-     * 要发送给的用户ID的别名对象
+     * customer id list for sending message
      */
     private static final String TO_USER_SID = "toUserId";
     /**
-     * 要发送i洗脑洗的别名
+     * the message key which contains the message we want to send.
      */
     private static final String CONTENT_TEXT = "message";
 
     @OnOpen
     public void onOpen(Session session, @PathParam("sId") String sId) {
-        // 如果用户不存在，则增加一条用户记录，并将记录数据增加1
+        // if user not exists, then add new user and person count ++
         this.sId = sId;
         this.session = session;
         if(null == currentUserMap.putIfAbsent(sId, this)) {
-            log.info("当前登陆人数：" + atomicOnlineCount.incrementAndGet() + "，用户ID：" + sId);
+            log.info("Current logon user count：" + atomicOnlineCount.incrementAndGet() + "，Customer ID：" + sId);
         }
 
-        // 发送通知消息
+        // send notification information
         try {
-            sendMessage(JSON.toJSONString(ResponseUtil.buildResponse(ResponseCodeEnum.SUCCESS, "用户：" + sId + "，连接成功！")));
+            sendMessage(JSON.toJSONString(ResponseUtil.buildResponse(ResponseCodeEnum.SUCCESS, "Customer：" + sId + "，connect succeed！")));
         } catch (IOException e) {
-            log.error("发送通知消息异常！", e);
+            log.error("Error while try to send message!", e);
         }
     }
 
     @OnClose
     public void onClose() {
         if(null != currentUserMap.remove(this.sId)) {
-            log.info("用户：" + this.sId + "，已经登出，当前用户人数：" + atomicOnlineCount.decrementAndGet());
+            log.info("Customer：" + this.sId + "，has logout, current logon user count is：" + atomicOnlineCount.decrementAndGet());
         }
     }
 
     @OnMessage
     public void onMessage(String message, Session session) {
-        log.info("收到用户：" + this.sId + "发来的一条消息，消息内容：" + message);
+        log.info("Receive ：" + this.sId + "'s message with info of ：" + message);
         if(StringUtils.isNoneBlank(message)) {
-            // 消息不为空，发送消息
+            // ignore empty message
             JSONObject jsonObject = JSON.parseObject(message);
             String users = jsonObject.getString(TO_USER_SID);
             String msgText = jsonObject.getString(CONTENT_TEXT);
@@ -94,7 +94,7 @@ public class MyChartWebSocketDemo {
                     try {
                         socketDemo.sendMessage(buildMessage(userId, msgText));
                     } catch (IOException e) {
-                        log.error("发送通知消息异常，异常对象：", e);
+                        log.error("Send message with exception, the userId is：{}", userId, e);
                     }
                 }
             });
@@ -102,7 +102,7 @@ public class MyChartWebSocketDemo {
                 try {
                     this.sendMessage(buildMessage(sId, msgText));
                 } catch (IOException e) {
-                    log.error("发送消息时异常：", e);
+                    log.error("Send message with exception：", e);
                 }
             }
         }

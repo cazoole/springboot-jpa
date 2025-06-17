@@ -23,27 +23,26 @@ public class RestfulCustomController {
     CustomRepository customRepository;
 
     /**
-     *  paramType 表明了参数的来源：
-     * \\ @ApiImplicitParam：用在@ApiImplicitParams注解中，指定一个请求参数的各个方面
-     *      header-->请求参数的获取：@RequestHeader
-     *      query-->请求参数的获取：@RequestParam
-     *      path（用于restful接口）-->请求参数的获取：@PathVariable
-     *      body（不常用）
-     *      form（不常用）
-     * @param id 客户ID
+     *  paramType means the parameter's type：
+     *      header--> get info from ：@RequestHeader
+     *      query--> get info from：@RequestParam
+     *      path（for restful api）--> get param from request path：@PathVariable
+     *      body（no need）
+     *      form（no need）
+     * @param id Customer ID
      * @return string
      */
-    @ApiOperation(value = "根据客户ID删除客户信息")
-    @ApiImplicitParam(paramType = "path", name = "id", value = "客户ID", required = true)
+    @ApiOperation(value = "delete customer with ID")
+    @ApiImplicitParam(paramType = "path", name = "id", value = "Customer ID", required = true)
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Object deleteCustom(@PathVariable("id") String id) {
-        log.info("删除客户开始，客户ID:" + id);
+        log.info("Begin to delete customer, ID:" + id);
         customRepository.deleteById(Long.valueOf(id));
-        log.info("删除客户结束，客户ID：" + id);
+        log.info("Done the delete of customer, ID：" + id);
         return ResponseUtil.buildResponse(ResponseCodeEnum.SUCCESS);
     }
 
-    @ApiOperation(value = "根据用户")
+    @ApiOperation(value = "add customer")
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Object addCustom(@ModelAttribute Custom custom) {
         return customRepository.save(custom);

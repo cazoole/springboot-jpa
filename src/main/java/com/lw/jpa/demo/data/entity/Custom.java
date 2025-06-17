@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -16,27 +16,27 @@ import javax.validation.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "TB_CUSTOM")
-@ApiModel("客户对象")
+@ApiModel("Customer")
 @Builder
 public class Custom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @ApiModelProperty(hidden = true, value = "客户ID")
+    @ApiModelProperty(hidden = true, value = "Customer ID")
     private Long id;
 
-    @NotEmpty(message = "姓名不可以为空！")
-    @ApiModelProperty("客户姓名")
+    @NotEmpty(message = "Name should not be empty!")
+    @ApiModelProperty("Customer name")
     private String name;
 
-    @NotEmpty(message = "年龄不可以为空！")
-    @Range(min = 0, max = 150, message = "年龄不合法！")
-    @ApiModelProperty("客户年龄")
+    @NotEmpty(message = "Age should not be empty!")
+    @Range(min = 0, max = 150, message = "Age is illegal")
+    @ApiModelProperty("Customer age")
     private String age;
 
-    @NotEmpty(message = "邮箱不能为空！")
-    @Email(message = "邮箱格式不正确！")
-    @ApiModelProperty("客户邮箱")
+    @NotEmpty(message = "Email address should not be null!")
+    @Email(message = "Email address is illegal")
+    @ApiModelProperty("Customer email address")
     private String email;
 
     public Long getId() {

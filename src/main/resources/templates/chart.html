@@ -2,47 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>websocket通讯</title>
+    <title>websocket chart room</title>
 </head>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 <script>
     var socket;
     function openSocket() {
         if(typeof(WebSocket) == "undefined") {
-            console.log("您的浏览器不支持WebSocket");
+            console.log("Your browser not support WebSocket");
         }else{
-            console.log("您的浏览器支持WebSocket");
             var socketUrl="ws://localhost:8181/websocketChart/"+$("#userId").val();
             // socketUrl=socketUrl.replace("https","ws").replace("http","ws");
             console.log(socketUrl);
             socket = new WebSocket(socketUrl);
-            //打开事件
+            // open connection
             socket.onopen = function() {
-                console.log("websocket已打开");
-                //socket.send("这是来自客户端的消息" + location.href + new Date());
+                console.log("websocket is open now.");
             };
-            //获得消息事件
+            // config message notify event
             socket.onmessage = function(msg) {
                 console.log(msg.data);
-                //发现消息进入    开始处理前端触发逻辑
+                // get message
                 var $p = "<p>" + msg.data + "</p>";
                 $("#message").append($p);
             };
-            //关闭事件
+            // close event
             socket.onclose = function() {
-                console.log("websocket已关闭");
+                console.log("websocket has been closed");
             };
-            //发生了错误事件
+            // error event
             socket.onerror = function() {
-                console.log("websocket发生了错误");
+                console.log("websocket occurs exception");
             }
         }
     }
     function sendMessage() {
         if(typeof(WebSocket) == "undefined") {
-            console.log("您的浏览器不支持WebSocket");
+            console.log("Your browser not support WebSocket");
         }else {
-            console.log("您的浏览器支持WebSocket");
             var message = '{"toUserId":"'+$("#toUserId").val()+'","message":"'+$("#respMsg").val()+'"}';
             console.log(message);
             socket.send(message);
@@ -50,22 +47,21 @@
     }
     function closeSocket() {
         if(typeof(WebSocket) == "undefined") {
-            console.log("您的浏览器不支持WebSocket");
+            console.log("Your browser not support WebSocket");
         }else {
-            console.log("您的浏览器支持WebSocket");
             console.log('[{"toUserId":"'+$("#toUserId").val()+'","message":"'+$("#respMsg").val()+'"}]');
             socket.close();
-            console.log("WebSocket 连接关闭成功！")
+            console.log("WebSocket closed succeed！")
         }
     }
 </script>
 <body>
     <p>【userId】：<div><input id="userId" name="userId" type="text" value="25"></div>
     <p>【toUserId】：<div><input id="toUserId" name="toUserId" type="text" value="26"></div>
-    <p>【message】：<div><input id="respMsg" name="respMsg" type="text" value="嗷嗷嗷"></div>
-    <p>【操作】：<div><a onclick="openSocket()">开启socket</a></div>
-    <p>【操作】：<div><a onclick="sendMessage()">发送消息</a></div>
-    <p>【操作】：<div><a onclick="closeSocket()">关闭连接</a></div>
+    <p>【message】：<div><input id="respMsg" name="respMsg" type="text" value="hello "></div>
+    <p>【操作】：<div><a onclick="openSocket()">Open connection</a></div>
+    <p>【操作】：<div><a onclick="sendMessage()">Send message</a></div>
+    <p>【操作】：<div><a onclick="closeSocket()">Close connection</a></div>
     <div id="message">
         <label>this is message label</label>
 

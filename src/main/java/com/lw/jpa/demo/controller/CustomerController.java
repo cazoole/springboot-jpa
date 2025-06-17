@@ -23,23 +23,23 @@ import javax.validation.ConstraintViolationException;
 @RestController
 @RequestMapping("custom")
 @Slf4j
-@Api(value = "顾客信息对应操作的Controller")
+@Api(value = "Customer information operate ")
 public class CustomerController {
 
     @Autowired
     CustomRepository customRepository;
 
-    @ApiOperation(value = "增加顾客信息", notes = "根据用户输入增加对应的顾客信息")
+    @ApiOperation(value = "add customer", notes = "add customer with data support by user")
     @ApiImplicitParam(name = "custom", required = true, paramType = "body")
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public Object addCustom(@ModelAttribute Custom custom) {
         try {
             return customRepository.save(custom).toString();
         } catch (ConstraintViolationException e) {
-            log.error("校验异常", e);
+            log.error("Constraint check failed:", e);
             return e.getMessage();
         } catch (TransactionSystemException e){
-            log.error("事务类异常", e);
+            log.error("Transaction exception:", e);
             Throwable t = e.getCause();
             if(null != t && !(t instanceof ConstraintViolationException)) {
                 t = t.getCause();
@@ -47,10 +47,10 @@ public class CustomerController {
                     return ConstraintViolationExceptionHandler.getCauseMessage((ConstraintViolationException) t);
                 }
             }
-            return null != e.getMessage() ? "未知异常":e.getMessage();
+            return null != e.getMessage() ? "Unknown Exception":e.getMessage();
         } catch (Exception e) {
-            log.error("未知异常：", e);
-            return "未知异常！";
+            log.error("Unknown Exception：", e);
+            return "Unknown Exception!";
         }
     }
 }

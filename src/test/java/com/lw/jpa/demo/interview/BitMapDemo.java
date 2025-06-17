@@ -21,11 +21,27 @@ public class BitMapDemo {
 
     @Test
     void testSimpleCase() {
-        // you can add init size for this BitSet, do not worry, the length will increase once need
+        // you can add init size for this BitSet, do not worry, the length will increase once need (normally )
         BitSet bitSet = new BitSet(1024);
         // push 4 to bitSet, then the index of 2 will be marked as 1, to binary this should be 100
         bitSet.set(4);
-        log.info("Current result for bitSet is: {}, and the check for 4 result is: {}, for 5 is: {}", bitSet.length(), bitSet.get(4), bitSet.get(5));
+        // 1 record cardinality (means how may record in the bitSet)
+        log.info("Current result for bitSet is: {}, and the check for 4 result is: {}, for 5 is: {}, array in use: {}, cardinality: {}", bitSet.length(), bitSet.get(4), bitSet.get(5), bitSet.size(), bitSet.cardinality());
 
+
+        bitSet.set(66);
+        // 2 record cardinality (means how may record in the bitSet)
+        // then the result length should be 67 (index)
+        log.info("Current result for bitSet is: {}, array in use: {}, cardinality: {}", bitSet.length(), bitSet.size(), bitSet.cardinality());
+
+        bitSet.set(33);
+        // 3 records
+        // then the result length should be 67 (index) for 33 is less then 66 and the index will not add
+        log.info("Current result for bitSet is: {}, array in use: {}, cardinality: {}", bitSet.length(), bitSet.size(), bitSet.cardinality());
+
+        bitSet.clear(66); // pop the 66 from the bitSet
+        // 2 records
+        // then the result length should be 67 (index) for 33 is less then 66 and the index will not add
+        log.info("Current result for bitSet is: {}, array in use: {}, cardinality: {}", bitSet.length(), bitSet.size(), bitSet.cardinality());
     }
 }

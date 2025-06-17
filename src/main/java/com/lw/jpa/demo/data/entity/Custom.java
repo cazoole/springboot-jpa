@@ -3,6 +3,7 @@ package com.lw.jpa.demo.data.entity;
 import com.google.common.base.MoreObjects;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table(name = "TB_CUSTOM")
 @ApiModel("客户对象")
+@Builder
 public class Custom {
 
     @Id

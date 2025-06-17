@@ -7,8 +7,8 @@ import lombok.Builder;
 import org.hibernate.validator.constraints.Range;
 
 import jakarta.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 
 /**
  * @author wei.liuw

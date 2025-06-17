@@ -2,7 +2,7 @@ package com.lw.jpa.demo.exception;
 
 import org.springframework.util.Assert;
 
-import javax.validation.ConstraintViolationException;
+import jakarta.validation.ConstraintViolationException;
 import java.util.stream.Collectors;
 
 /**
